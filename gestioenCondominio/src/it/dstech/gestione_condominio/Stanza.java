@@ -1,6 +1,8 @@
 package it.dstech.gestione_condominio;
 
-public class Stanza {
+import java.io.Serializable;
+
+public class Stanza implements Serializable {
 
 	private String nome;
 

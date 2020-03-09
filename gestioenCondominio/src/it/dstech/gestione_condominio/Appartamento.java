@@ -1,9 +1,10 @@
 package it.dstech.gestione_condominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Appartamento {
+public class Appartamento implements Serializable{
 
 	@Override
 	public int hashCode() {

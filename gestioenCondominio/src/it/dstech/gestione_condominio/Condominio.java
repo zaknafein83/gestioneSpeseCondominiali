@@ -1,9 +1,10 @@
 package it.dstech.gestione_condominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Condominio {
+public class Condominio implements Serializable{
 
 	private String nome;
 
