@@ -31,11 +31,14 @@ public class GestioneCondominio {
 			}
 			case 2: {
 				// creazione camera
-
+				Stanza stanza = creaStanza(scanner);
+				Appartamento appartamento = scegliAppartamento(scanner, condominio);
+				appartamento.aggiungiStanza(stanza);
 				break;
 			}
 			case 3: {
 				// conteggio spese
+				calcoloSpeseMensili(scanner, condominio);
 
 				break;
 			}
@@ -54,6 +57,55 @@ public class GestioneCondominio {
 
 		}
 
+	}
+
+	private static void calcoloSpeseMensili(Scanner scanner, Condominio condominio) {
+		System.out.println("Inserisci le spese mensili");
+		double speseMensili = scanner.nextDouble();
+		double conteggioTotaleCondominio = condominio.calcoloMillesimiCondominio();
+
+		// spese : dimensione = x : dimension
+
+		for (Appartamento app : condominio.getListaAppartamenti()) {
+			double speseSingoloAppartamento = (speseMensili * app.calcolaMillesimiAppartamento())
+					/ conteggioTotaleCondominio;
+			System.out.println("l'appartamento " + app + " deve pagare: " + speseSingoloAppartamento);
+		}
+
+		scanner.nextLine();
+	}
+
+	private static Appartamento scegliAppartamento(Scanner scanner, Condominio condominio) {
+		System.out.println("Indicami a quale appartamento vuoi aggiungere la camera");
+		for (Appartamento app : condominio.getListaAppartamenti()) {
+			System.out.println(app);
+		}
+		System.out.println("Indicami l'id:");
+		String idAppartamento = scanner.nextLine();
+		int posizione = condominio.getListaAppartamenti().indexOf(new Appartamento("", idAppartamento));
+		return condominio.getListaAppartamenti().get(posizione);
+	}
+
+	private static Stanza creaStanza(Scanner scanner) {
+		System.out.println("dammi il nome della stanza");
+		String nome = scanner.nextLine();
+		System.out.println("Dammi l'esposizione della stanza");
+
+		Esposizione esposizione = null;
+		String enumerationLettaDaTastiera = scanner.nextLine();
+		Esposizione[] values = Esposizione.values();
+		for (Esposizione esp : values) {
+			if (Esposizione.valueOf(enumerationLettaDaTastiera).equals(esp)) {
+				esposizione = esp;
+			}
+		}
+
+		System.out.println("Dammi la sua metratura");
+		double misura = scanner.nextDouble();
+		scanner.nextLine();
+
+		Stanza stanza = new Stanza(nome, esposizione, misura);
+		return stanza;
 	}
 
 	private static void stampa(Condominio condominio) {
