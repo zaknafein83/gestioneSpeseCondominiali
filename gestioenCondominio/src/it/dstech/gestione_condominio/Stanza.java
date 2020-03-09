@@ -8,6 +8,13 @@ public class Stanza {
 
 	private double misura;
 
+	public Stanza(String nome, Esposizione esposizione, double misura) {
+		super();
+		this.nome = nome;
+		this.esposizione = esposizione;
+		this.misura = misura;
+	}
+
 	public String getNome() {
 		return nome;
 	}
