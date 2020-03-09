@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class Stanza implements Serializable {
 
+	@Override
+	public String toString() {
+		return "Stanza [nome=" + nome + ", esposizione=" + esposizione + ", misura=" + misura + "]";
+	}
+
 	private String nome;
 
 	private Esposizione esposizione;

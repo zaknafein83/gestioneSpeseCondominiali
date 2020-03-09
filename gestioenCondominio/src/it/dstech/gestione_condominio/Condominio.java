@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Condominio implements Serializable{
+public class Condominio implements Serializable {
 
 	private String nome;
 
@@ -50,6 +50,12 @@ public class Condominio implements Serializable{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Condominio [nome=" + nome + ", indirizzo=" + indirizzo + ", listaAppartamenti=" + listaAppartamenti
+				+ "]";
+	}
+
 	public boolean rimuoviAppartamento(Appartamento appartamento) {
 		if (!this.listaAppartamenti.contains(appartamento)) {
 			return false;
@@ -58,4 +64,12 @@ public class Condominio implements Serializable{
 		return true;
 	}
 
+	public double calcoloMillesimiCondominio() {
+		double somma = 0.0;
+		for (Appartamento appartamento : listaAppartamenti) {
+			somma += appartamento.calcolaMillesimiAppartamento();
+		}
+		return somma;
+
+	}
 }

@@ -31,6 +31,11 @@ public class Appartamento implements Serializable{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Appartamento [proprietario=" + proprietario + ", id=" + id + ", listaStanze=" + listaStanze + "]";
+	}
+
 	private String proprietario;
 
 	private String id; // regex p\d{2}i\d{2}
