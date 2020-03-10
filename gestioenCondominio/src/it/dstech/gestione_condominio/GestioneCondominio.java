@@ -163,7 +163,7 @@ public class GestioneCondominio {
 
 	private static void menu() {
 		System.out.println(new String("Fai la tua scelta"));
-		System.out.println("1. inserisci appartamento");
+		System.out.println("1. inserisci appartamento");    
 		System.out.println("2. inserisci camera");
 		System.out.println("3. calcola");
 		System.out.println("4. stampa");
