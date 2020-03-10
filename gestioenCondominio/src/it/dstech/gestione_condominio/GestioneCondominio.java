@@ -14,6 +14,7 @@ public class GestioneCondominio {
 
 	private static final String ID_APPARTAMENTO_REGEX = "p\\d?\\di\\d?\\d";
 
+	
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		Scanner scanner = new Scanner(System.in);
 		Condominio condominio = caricaCondominio();
@@ -144,8 +145,7 @@ public class GestioneCondominio {
 			salvaCondominio(condominio);
 			return condominio;
 		}
-		FileInputStream in = new FileInputStream(file);
-		ObjectInputStream stream = new ObjectInputStream(in);
+		ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file));
 		Condominio condominio = (Condominio) stream.readObject();
 		return condominio;
 	}
@@ -155,22 +155,19 @@ public class GestioneCondominio {
 		if (!file.exists()) {
 			file.createNewFile();
 		}
-		FileOutputStream out = new FileOutputStream(file);
-		ObjectOutputStream stream = new ObjectOutputStream(out);
+		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
 		stream.writeObject(condominio);
 		stream.close();
 
 	}
 
 	private static void menu() {
-
-		System.out.println("Fai la tua scelta");
+		System.out.println(new String("Fai la tua scelta"));
 		System.out.println("1. inserisci appartamento");
 		System.out.println("2. inserisci camera");
 		System.out.println("3. calcola");
 		System.out.println("4. stampa");
 		System.out.println("0. ESCI");
-
 	}
 
 }
