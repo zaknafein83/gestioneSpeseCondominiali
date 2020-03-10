@@ -138,7 +138,7 @@ public class GestioneCondominio {
 	}
 
 	private static Condominio caricaCondominio() throws ClassNotFoundException, IOException {
-		File file = new File("condomionio.obj");
+		File file = new File("condomionio");
 		if (!file.exists()) {
 			file.createNewFile();
 			Condominio condominio = new Condominio("nome", "indirizzo");
@@ -151,7 +151,7 @@ public class GestioneCondominio {
 	}
 
 	private static void salvaCondominio(Condominio condominio) throws IOException {
-		File file = new File("condomionio.obj");
+		File file = new File("condomionio");
 		if (!file.exists()) {
 			file.createNewFile();
 		}
